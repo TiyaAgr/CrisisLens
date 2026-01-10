@@ -1,24 +1,52 @@
-CrisisLens – Model Evaluation Results
+CrisisLens — Model Evaluation Metrics
+====================================
 
-Model: TF-IDF + Logistic Regression
-Dataset: Disaster Tweets (Kaggle)
+Dataset:
+- Binary classification (Crisis vs Non-Crisis)
+- Test samples: 1523
 
-Train / Validation Split:
-- 80% train
-- 20% validation
-- Stratified on target label
+------------------------------------
 
-Validation Metrics:
-- Accuracy: ~0.80
-- Precision (weighted): ~0.80
-- Recall (weighted): ~0.80
-- F1-score (weighted): ~0.80
+Model V1: TF-IDF + Logistic Regression
 
-Notes:
-- Bigram TF-IDF (1,2) with max_features=10,000
-- Logistic Regression with max_iter=1000
-- Baseline classical ML model (CrisisLens V1)
+Accuracy: 81.55%
 
-Next Steps:
-- Upgrade to transformer-based classifier (DistilBERT)
-- Improve recall for high-urgency disaster tweets
+Class-wise Performance:
+- Class 0 (Non-Crisis):
+  Precision: 0.80
+  Recall:    0.90
+  F1-score:  0.85
+- Class 1 (Crisis):
+  Precision: 0.84
+  Recall:    0.70
+  F1-score:  0.77
+
+Macro Avg F1:    0.81
+Weighted Avg F1: 0.81
+
+Observations:
+- Strong baseline with high recall for non-crisis content
+- Struggles with contextual ambiguity in crisis detection
+
+------------------------------------
+
+Model V2: DistilBERT (Fine-tuned)
+
+Best Epoch: 2
+
+Accuracy: 84.31%
+F1-score: 0.81
+
+Training Loss:    0.1847
+Validation Loss:  0.4253
+
+Observations:
+- Improves overall accuracy over TF-IDF baseline
+- Better semantic and contextual understanding
+- Early signs of overfitting after epoch 2, indicating optimal early stopping
+
+------------------------------------
+
+Conclusion:
+- Transformer-based model outperforms traditional ML baseline
+- DistilBERT offers a favorable trade-off between performance and efficiency
