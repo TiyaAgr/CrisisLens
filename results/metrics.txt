@@ -1,0 +1,24 @@
+CrisisLens – Model Evaluation Results
+
+Model: TF-IDF + Logistic Regression
+Dataset: Disaster Tweets (Kaggle)
+
+Train / Validation Split:
+- 80% train
+- 20% validation
+- Stratified on target label
+
+Validation Metrics:
+- Accuracy: ~0.80
+- Precision (weighted): ~0.80
+- Recall (weighted): ~0.80
+- F1-score (weighted): ~0.80
+
+Notes:
+- Bigram TF-IDF (1,2) with max_features=10,000
+- Logistic Regression with max_iter=1000
+- Baseline classical ML model (CrisisLens V1)
+
+Next Steps:
+- Upgrade to transformer-based classifier (DistilBERT)
+- Improve recall for high-urgency disaster tweets
